@@ -37,6 +37,12 @@ function Vehicle (planetSurfaceSize){
 	}
 
 	var getNextPosition = function(moveForward){
+
+		var previousPosition;
+		previousPosition = currentPosition;
+		
+		console.log(previousPosition)
+		console.log(currentPosition)
 		if(!moveForward){
 			var directionContainer = currentDirection; 
 			
@@ -49,7 +55,7 @@ function Vehicle (planetSurfaceSize){
 			}else{
 				currentDirection = 1
 			}
-		}
+		}	
 
 		switch(currentDirection){
 			case 0:
@@ -85,7 +91,13 @@ function Vehicle (planetSurfaceSize){
 		if(!moveForward){
 			currentDirection= directionContainer; 
 		}
-		console.log(currentPosition)
+		if(planetSurface[currentPosition.x][currentPosition.y]=="X"){
+			console.log("Can't move due to an obstacle");
+			return getNextPosition(false);
+		}else{
+			console.log(currentPosition)	
+		}
+		
 	}
 
 	return {
@@ -105,6 +117,25 @@ function Vehicle (planetSurfaceSize){
 				return getNextPosition(false);	
 			}
 			
+		},
+		canMove : function(){
+			return canMoveToPosition(position);
+		},
+		setObstacle : function(x, y){
+			planetSurface[x][y] = "X"
+		},
+		parseCommand : function (string){
+			
+			for(var i = 0 ; i<string.length; i++){
+				if(string[i] ==="F"){
+					getNextPosition(true);
+				}else if(string[i] ==="B"){
+					getNextPosition(false);
+				}else{
+					updateDirection(string[i]);
+				}
+
+			}
 		}
 	}
 }
