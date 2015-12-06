@@ -58,5 +58,15 @@ describe('Vehicle related tests', function(){
 
 		expect(vehicle.getCurrentPosition().x == 0 && vehicle.getCurrentPosition().y == 0 ).toBeTruthy()
 	});
+
+	it('Vehicle can detect obstacles and prevent moving', function(){
+		var vehicle = new Vehicle(3);
+
+		vehicle.setObstacle(0,1);
+
+		vehicle.advance("F");
+
+		expect(vehicle.getCurrentPosition().x == 0 && vehicle.getCurrentPosition().y == 0 ).toBeTruthy()
+	});
 	
 })
