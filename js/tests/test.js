@@ -3,13 +3,13 @@ describe('Vehicle related tests', function(){
 		var vehicle = new Vehicle(2);
 		// All vehicles are initialized by default as North for direction
 		vehicle.setDirection("R");
-		expect(vehicle.getDirection() === "WEST").toBeTruthy();
+		expect(vehicle.getDirection() === "EAST").toBeTruthy();
 		
 		vehicle.setDirection("R");
 		expect(vehicle.getDirection() === "SOUTH").toBeTruthy();
 		
 		vehicle.setDirection("R");
-		expect(vehicle.getDirection() === "EAST").toBeTruthy();
+		expect(vehicle.getDirection() === "WEST").toBeTruthy();
 		
 		vehicle.setDirection("R");
 		expect(vehicle.getDirection() === "NORTH").toBeTruthy();
@@ -20,13 +20,13 @@ describe('Vehicle related tests', function(){
 		// All vehicles are initialized by default as North for direction
 
 		vehicle.setDirection("L");
-		expect(vehicle.getDirection() === "EAST").toBeTruthy();
+		expect(vehicle.getDirection() === "WEST").toBeTruthy();
 
 		vehicle.setDirection("L");
 		expect(vehicle.getDirection() === "SOUTH").toBeTruthy();
 
 		vehicle.setDirection("L");
-		expect(vehicle.getDirection() === "WEST").toBeTruthy();
+		expect(vehicle.getDirection() === "EAST").toBeTruthy();
 
 		vehicle.setDirection("L");
 		expect(vehicle.getDirection() === "NORTH").toBeTruthy();
